@@ -33,9 +33,16 @@ function printPokemonList(pokemon) {
         pokemonImg.src = pokemonData.pokemonImg;
 
         let pokemonTypes = document.createElement("p");
-        pokemonTypes.innerText = "Typer: " + pokemonData.type;
+        pokemonTypes.innerText = "Types: " + pokemonData.type;
+
+        let catchBtn = document.createElement("button")
+        catchBtn.innerText = "Catch"
+
+        catchBtn.addEventListener("click", function() {
+            console.log("Du fångade " + pokemonData.pokemonName);
+        })
         
-        pokemonDiv.append(pokemonName, pokemonImg, pokemonTypes);
+        pokemonDiv.append(pokemonName, pokemonImg, pokemonTypes, catchBtn);
         pokemonList.appendChild(pokemonDiv);
     });
     
