@@ -1,0 +1,28 @@
+h1 {
+    text-align: center;
+    color: white;
+}
+
+h2 {
+    text-transform: capitalize;
+}
+
+p {
+    text-transform: capitalize;
+}
+
+body {
+    background-color: red;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#pokemonList {
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+.pokemon {
+    background-color: white;
+}
