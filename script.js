@@ -38,6 +38,21 @@ function printPokemonList(pokemon) {
         let catchBtn = document.createElement("button")
         catchBtn.innerText = "Catch";
 
+        let releaseBtn = document.createElement("button")
+        releaseBtn.innerText = "Release";
+
+        fetch("http://localhost:8080/look-for-pokemon?pokemonId=" + pokemonData.pokemonId)
+        .then(res => res.json())
+        .then(found => {
+            if(found) {
+                catchBtn.style.display = "none";
+                releaseBtn.style.display = "block";
+            } else {
+                catchBtn.style.display = "block";
+                releaseBtn.style.display = "none";
+            }
+        })
+
         catchBtn.addEventListener("click", function() {
             fetch("http://localhost:8080/catch-pokemon", {
                 method: "POST",
@@ -52,11 +67,11 @@ function printPokemonList(pokemon) {
             .then(data => {
                 console.log(data);
                 alert(data); 
+
+                catchBtn.style.display = "none";
+                releaseBtn.style.display = "block";
             })
         });
-
-        let releaseBtn = document.createElement("button")
-        releaseBtn.innerText = "Release";
 
         releaseBtn.addEventListener("click", function() {
             fetch("http://localhost:8080/release-pokemon", {
@@ -72,6 +87,9 @@ function printPokemonList(pokemon) {
             .then(data => {
                 console.log(data);
                 alert(data);
+
+                catchBtn.style.display = "block";
+                releaseBtn.style.display = "none";
             })
         });
         
