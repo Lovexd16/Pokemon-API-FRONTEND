@@ -38,6 +38,7 @@ function printPokemonList(pokemon) {
         pokemonName.innerText = pokemonData.pokemonId + ". " +  pokemonData.pokemonName;
 
         let pokemonImg = document.createElement("img");
+        pokemonImg.classList.add("pokemonImg");
         pokemonImg.src = pokemonData.pokemonImg;
 
         let pokemonTypes = document.createElement("p");
