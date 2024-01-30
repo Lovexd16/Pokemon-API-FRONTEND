@@ -36,7 +36,7 @@ function printPokemonList(pokemon) {
         pokemonTypes.innerText = "Types: " + pokemonData.type;
 
         let catchBtn = document.createElement("button")
-        catchBtn.innerText = "Catch"
+        catchBtn.innerText = "Catch";
 
         catchBtn.addEventListener("click", function() {
             fetch("http://localhost:8080/catch-pokemon", {
@@ -54,9 +54,29 @@ function printPokemonList(pokemon) {
                 alert(data); 
             })
         });
+
+        let releaseBtn = document.createElement("button")
+        releaseBtn.innerText = "Release";
+
+        releaseBtn.addEventListener("click", function() {
+            fetch("http://localhost:8080/release-pokemon", {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(pokemonData)
+            })
+            .then(res => {
+                return res.text();
+            })
+            .then(data => {
+                console.log(data);
+                alert(data);
+            })
+        });
         
         
-        pokemonDiv.append(pokemonName, pokemonImg, pokemonTypes, catchBtn);
+        pokemonDiv.append(pokemonName, pokemonImg, pokemonTypes, catchBtn, releaseBtn);
         pokemonList.appendChild(pokemonDiv);
     });
     
