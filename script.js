@@ -39,8 +39,22 @@ function printPokemonList(pokemon) {
         catchBtn.innerText = "Catch"
 
         catchBtn.addEventListener("click", function() {
-            console.log("Du fångade " + pokemonData.pokemonName);
-        })
+            fetch("http://localhost:8080/catch-pokemon", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(pokemonData),
+            })
+            .then(res => {
+                return res.text();
+            })
+            .then(data => {
+                console.log(data);
+                alert(data); 
+            })
+        });
+        
         
         pokemonDiv.append(pokemonName, pokemonImg, pokemonTypes, catchBtn);
         pokemonList.appendChild(pokemonDiv);
