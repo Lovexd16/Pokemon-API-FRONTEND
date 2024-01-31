@@ -4,7 +4,9 @@ h1 {
 }
 
 h2 {
+    text-align: center;
     text-transform: capitalize;
+    text-decoration-line: underline;
 }
 
 p {
@@ -16,11 +18,23 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+button {
+    cursor: pointer;
+}
+
 #pokemonList {
     text-align: center;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 30px;
+}
+
+#caughtPokemonContainer {
+    margin-top: 10px;
+    display: inline-block;
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .pokemon {
@@ -30,3 +44,16 @@ body {
 .pokemonImg {
     width: 150px;
 }
+
+.caughtPokemonListItem {
+    text-transform: capitalize;
+}
+
+.catchBtn:hover {
+    background-color: lightgreen;
+}
+
+.releaseBtn:hover {
+    background-color: red;
+}
+
