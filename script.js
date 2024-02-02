@@ -64,7 +64,7 @@ function printPokemonList(pokemon) {
   });
 }
 
-//function för att kolla om specifik pokemon finns i databasen, beroende på om den finns eller inte visas rätt knapp
+//function för att kolla om specifik pokemon finns i databasen. Detta för att visa korrekt knapp för varje pokemon
 function lookForPokemon(pokemonData, catchBtn, releaseBtn) {
   fetch("http://localhost:8080/look-for-pokemon?pokemonId=" + pokemonData.pokemonId)
     .then((res) => res.json())
@@ -143,10 +143,10 @@ function getCaughtPokemon() {
 }
 
 //Function för att skriva ut fångade pokemon i en lista på sidan
-function printCaughtPokemonList(pokemonList) {
+function printCaughtPokemonList(pokemonCaughtList) {
   caughtPokemonList.innerHTML = "";
 
-  if(pokemonList.length === 0) {
+  if(pokemonCaughtList.length === 0) {
     let emptyList = document.createElement("p2");
     emptyList.classList.add("emptyList");
     emptyList.innerText = "Du har inga fångade pokemon!"
@@ -154,7 +154,7 @@ function printCaughtPokemonList(pokemonList) {
     caughtPokemonList.appendChild(emptyList);
   } else {
 
-    pokemonList.forEach((pokemonData) => {
+    pokemonCaughtList.forEach((pokemonData) => {
         let caughtPokemonListItem = document.createElement("li");
         caughtPokemonListItem.classList.add("caughtPokemonListItem");
         caughtPokemonListItem.innerText = `${pokemonData.pokemonName}`;
