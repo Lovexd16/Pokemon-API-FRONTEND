@@ -70,8 +70,10 @@ function lookForPokemon(pokemonData, catchBtn, releaseBtn) {
     .then((res) => res.json())
     .then((found) => {
       if (found) {
+        //Ändra style på knapparna så en göms, en visas
         catchBtn.style.display = "none";
         releaseBtn.style.display = "block";
+
       } else {
         catchBtn.style.display = "block";
         releaseBtn.style.display = "none";
